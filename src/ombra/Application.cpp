@@ -10,6 +10,7 @@
 #include <vulkan/vulkan.h>
 #include <vulkan/instance.h>
 #include "Config.h"
+#include "Device.h"
 #include "PhysicalDevice.h"
 
 namespace ombra {
@@ -32,6 +33,19 @@ namespace ombra {
         m_physicalDevice = std::make_unique<vulkan::PhysicalDevice>(
             m_instance->get(), m_surface->get()
         );
+
+        m_device = std::make_unique<vulkan::Device>(
+        m_physicalDevice->get(),
+         m_surface->get()
+        );
+
+        m_renderer = std::make_unique<renderer::Renderer>(
+        *m_device,
+        m_physicalDevice->get(),
+        m_surface->get(),
+        WIDTH,
+        HEIGHT
+);
     }
 
     Application::~Application() {
@@ -42,6 +56,10 @@ namespace ombra {
     void Application::run() {
         while (!glfwWindowShouldClose(window)) {
             glfwPollEvents();
+
+            m_renderer->beginFrame();
+            m_renderer->draw();
+            m_renderer->endFrame();
         }
     }
 

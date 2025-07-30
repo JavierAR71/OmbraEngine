@@ -21,4 +21,7 @@ using Flags   = uint32_t;
 using Version = uint32_t;
 using Index   = uint32_t;
 using Time    = float;
+
+using FrameIndex = uint32_t;
+using ImageIndex = uint32_t;
 #endif //OMBRACORE_H

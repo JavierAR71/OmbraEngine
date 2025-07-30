@@ -13,6 +13,7 @@
 #include "vulkan/DebugMessenger.h"
 #include "vulkan/Surface.h"
 #include "vulkan/PhysicalDevice.h"
+#include "renderer/Renderer.h"
 
 struct GLFWwindow;
 
@@ -37,6 +38,8 @@ namespace ombra {
         std::unique_ptr<vulkan::DebugMessenger> m_debugMessenger;
         std::unique_ptr<vulkan::Surface> m_surface;
         std::unique_ptr<vulkan::PhysicalDevice> m_physicalDevice;
+        std::unique_ptr<vulkan::Device> m_device;
+        std::unique_ptr<renderer::Renderer> m_renderer;
     };
 
     };

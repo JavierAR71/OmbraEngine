@@ -35,6 +35,12 @@ add_executable(OmbraEngine ${OMBRA_ENGINE_SRC}
         src/ombra/vulkan/PhysicalDevice.h
         src/ombra/core/Macros.h
         src/ombra/core/OmbraCore.h
+        src/ombra/vulkan/Device.cpp
+        src/ombra/vulkan/Device.h
+        src/ombra/vulkan/Swapchain.cpp
+        src/ombra/vulkan/Swapchain.h
+        src/ombra/vulkan/renderer/Renderer.cpp
+        src/ombra/vulkan/renderer/Renderer.h
 )
 target_include_directories(OmbraEngine PRIVATE src/ombra)
 target_include_directories(OmbraEngine PRIVATE src/ombra src/ombra/vulkan)
