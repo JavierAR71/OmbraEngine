@@ -4,6 +4,8 @@
 
 #include "vulkan/vulkan.h"
 #include <iostream>
+#include <stdexcept>
+#include "Application.h"
 
 namespace ombra {
     void printVulkanVersion() {
@@ -19,7 +21,14 @@ namespace ombra {
 }
 
 int main() {
-    ombra::printVulkanVersion();
-    return 0;
+    try {
+        ombra::Application app;
+        app.run();
+    } catch (const std::exception& e) {
+        std::cerr << "[Ombra] Error: " << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
 }
 //
