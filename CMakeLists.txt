@@ -29,6 +29,12 @@ add_executable(OmbraEngine ${OMBRA_ENGINE_SRC}
         src/ombra/vulkan/DebugMessenger.cpp
         src/ombra/vulkan/DebugMessenger.h
         src/ombra/Config.h
+        src/ombra/vulkan/Surface.cpp
+        src/ombra/vulkan/Surface.h
+        src/ombra/vulkan/PhysicalDevice.cpp
+        src/ombra/vulkan/PhysicalDevice.h
+        src/ombra/core/Macros.h
+        src/ombra/core/OmbraCore.h
 )
 target_include_directories(OmbraEngine PRIVATE src/ombra)
 target_include_directories(OmbraEngine PRIVATE src/ombra src/ombra/vulkan)

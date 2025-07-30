@@ -9,17 +9,28 @@
 #include <string.h>
 #include <vulkan/vulkan.h>
 #include <vulkan/instance.h>
-#include "Config.h""
+#include "Config.h"
+#include "PhysicalDevice.h"
 
 namespace ombra {
 
     Application::Application() {
-        initWindow(); // glfwInit() debe ir primero
+        initWindow();
 
-        m_instance = std::make_unique<vulkan::Instance>("Ombra Engine", VK_MAKE_VERSION(0, 1, 0));
+        m_instance = std::make_unique<vulkan::Instance>(
+            "Ombra Engine", OMBRA_ENGINE_VERSION
+        );
 
         m_debugMessenger = std::make_unique<vulkan::DebugMessenger>(
             m_instance->get()
+        );
+
+        m_surface = std::make_unique<vulkan::Surface>(
+            m_instance->get(), window
+        );
+
+        m_physicalDevice = std::make_unique<vulkan::PhysicalDevice>(
+            m_instance->get(), m_surface->get()
         );
     }
 
@@ -36,20 +47,20 @@ namespace ombra {
 
     void Application::initWindow() {
         if (!glfwInit()) {
-            throw std::runtime_error("Failed to initialize GLFW!");
+            throw std::runtime_error("[Application] Failed to initialize GLFW");
         }
 
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
         window = glfwCreateWindow(WIDTH, HEIGHT, "Ombra Engine", nullptr, nullptr);
-
-        if (window == nullptr) {
-            std::cerr << "Failed to create GLFW window" << std::endl;
+        if (!window) {
+            std::cerr << "[Application] Failed to create GLFW window" << std::endl;
             glfwTerminate();
             throw std::runtime_error("Failed to create GLFW window");
         }
     }
+
 }
 
 
