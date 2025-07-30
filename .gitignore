@@ -1,0 +1,43 @@
+﻿# === CMake build ===
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+/Makefile
+/*.cmake
+/*.ninja
+/*.ninja_deps
+/*.ninja_log
+
+# === Binarios ===
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.pdb
+*.obj
+*.o
+*.ilk
+
+# === IDEs ===
+.idea/
+.vscode/
+*.sln
+*.vcxproj*
+*.user
+*.db
+
+# === Archivos temporales ===
+*.log
+*.tmp
+*.bak
+*.swp
+*.cache
+
+# === Shaders compilados ===
+*.spv
+
+# === Sistema ===
+.DS_Store
+Thumbs.db
